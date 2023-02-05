@@ -4,9 +4,9 @@
       <q-toolbar>
         <q-toolbar-title>
           <q-avatar>
-            <img src="/logo_footer.png">
+            <img src="/stingray.png">
           </q-avatar>
-          Гидронавтика
+          Stingray
         </q-toolbar-title>
       </q-toolbar>
       <q-tabs align="left">
@@ -24,11 +24,11 @@
       <q-toolbar>
         <q-toolbar-title>
           <q-avatar>
-            <img src="/stingray.png">
+            <img src="/logo_footer.png">
           </q-avatar>
-          Stingray
+          Гидронавтика
         </q-toolbar-title>
-        <q-badge :color="statusColor" :text-color="statusColor === 'info' ? 'dark' : 'white'">{{statusText}}</q-badge>
+        <pre><q-badge class="connection-badge text-lowercase" :color="statusColor" :text-color="statusColor === 'info' ? 'dark' : 'white'">{{statusText}}</q-badge></pre>
       </q-toolbar>
     </q-footer>
 
@@ -44,3 +44,9 @@ import {storeToRefs} from "pinia";
 const {statusColor, statusText} = storeToRefs(useWebSocketStore())
 
 </script>
+
+<style scoped>
+.connection-badge {
+  transition: all ease-in-out 200ms;
+}
+</style>
