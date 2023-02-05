@@ -1,8 +1,16 @@
 <template>
   <div>
-    <div v-for="(v, k) of lastValuesString" :key="k">
-      {{ k }}: {{ v }}
-    </div>
+    <q-markup-table separator="horizontal" flat bordered :class="{
+  [`bg-${color}`]: color
+}" :dark="dark">
+      <tbody>
+      <tr v-for="(v, k) of modelValue" :key="k">
+        <td class="text-left">{{ v.name }}</td>
+        <td :class="units ? 'text-center' : 'text-right'">{{ v.value ?? "..." }}</td>
+        <td class="text-right" v-if="units">{{ v.unit }}</td>
+      </tr>
+      </tbody>
+    </q-markup-table>
   </div>
 </template>
 
@@ -11,6 +19,22 @@
 import {useWebSocketStore} from "stores/websocket";
 import {storeToRefs} from "pinia";
 
-const {lastValuesString} = storeToRefs(useWebSocketStore())
+defineProps({
+  modelValue: {
+    type: Array,
+    required: true,
+  },
+  color: {
+    type: String,
+  },
+  units: {
+    type: Boolean,
+    default: () => false
+  },
+  dark: {
+    type: Boolean,
+    default: () => false
+  }
+})
 
 </script>

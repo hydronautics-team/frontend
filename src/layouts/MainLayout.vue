@@ -1,91 +1,46 @@
 <template>
-  <q-layout view="lHh Lpr lFf">
-    <q-header elevated>
+  <q-layout view="hHh lpr fFf">
+    <q-header elevated class="bg-primary text-white" height-hint="98">
       <q-toolbar>
-        <q-btn
-          flat
-          dense
-          round
-          icon="menu"
-          aria-label="Menu"
-          @click="toggleLeftDrawer"
-        />
-
-        <q-toolbar-title> Stingray </q-toolbar-title>
-
-        <div>Quasar v{{ $q.version }}</div>
+        <q-toolbar-title>
+          <q-avatar>
+            <img src="/logo_footer.png">
+          </q-avatar>
+          Гидронавтика
+        </q-toolbar-title>
       </q-toolbar>
+      <q-tabs align="left">
+        <q-route-tab to="/" label="Главная"/>
+        <q-route-tab to="/details" label="Детали"/>
+        <q-route-tab to="/about" label="О нас"/>
+      </q-tabs>
     </q-header>
 
-    <q-drawer v-model="leftDrawerOpen" show-if-above bordered>
-      <q-list>
-        <q-item-label header> Essential Links </q-item-label>
-
-        <EssentialLink
-          v-for="link in essentialLinks"
-          :key="link.title"
-          v-bind="link"
-        />
-      </q-list>
-    </q-drawer>
-
-    <q-page-container>
-      <router-view />
+    <q-page-container class="q-px-md">
+      <router-view/>
     </q-page-container>
+
+    <q-footer elevated class="bg-secondary text-white" co height-hint="98">
+      <q-toolbar>
+        <q-toolbar-title>
+          <q-avatar>
+            <img src="/stingray.png">
+          </q-avatar>
+          Stingray
+        </q-toolbar-title>
+        <q-badge :color="statusColor" :text-color="statusColor === 'info' ? 'dark' : 'white'">{{statusText}}</q-badge>
+      </q-toolbar>
+    </q-footer>
+
   </q-layout>
 </template>
 
+
 <script setup>
-import { ref } from "vue";
-import EssentialLink from "components/EssentialLink.vue";
 
-const essentialLinks = ref([
-  {
-    title: "Docs",
-    caption: "quasar.dev",
-    icon: "school",
-    link: "https://quasar.dev",
-  },
-  {
-    title: "Github",
-    caption: "github.com/quasarframework",
-    icon: "code",
-    link: "https://github.com/quasarframework",
-  },
-  {
-    title: "Discord Chat Channel",
-    caption: "chat.quasar.dev",
-    icon: "chat",
-    link: "https://chat.quasar.dev",
-  },
-  {
-    title: "Forum",
-    caption: "forum.quasar.dev",
-    icon: "record_voice_over",
-    link: "https://forum.quasar.dev",
-  },
-  {
-    title: "Twitter",
-    caption: "@quasarframework",
-    icon: "rss_feed",
-    link: "https://twitter.quasar.dev",
-  },
-  {
-    title: "Facebook",
-    caption: "@QuasarFramework",
-    icon: "public",
-    link: "https://facebook.quasar.dev",
-  },
-  {
-    title: "Quasar Awesome",
-    caption: "Community Quasar projects",
-    icon: "favorite",
-    link: "https://awesome.quasar.dev",
-  },
-]);
-const leftDrawerOpen = ref(false);
+import {useWebSocketStore} from "stores/websocket";
+import {storeToRefs} from "pinia";
 
-function toggleLeftDrawer() {
-  leftDrawerOpen.value = !leftDrawerOpen.value;
-}
+const {statusColor, statusText} = storeToRefs(useWebSocketStore())
+
 </script>
