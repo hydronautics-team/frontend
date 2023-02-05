@@ -1,6 +1,6 @@
 <template>
   <div>
-    <q-markup-table separator="horizontal" flat bordered :class="{
+    <q-markup-table separator="horizontal" bordered flat :class="{
   [`bg-${color}`]: color
 }" :dark="dark">
       <tbody>
