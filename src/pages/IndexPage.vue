@@ -11,7 +11,7 @@
       <div class="col-8 col-sm-5 col-md-7 col-lg-8 col-xl-9 self-center">
 
         <q-card bordered flat>
-          <VueFlow v-model="elements" class="main-field">
+          <VueFlow v-model="missionElements" class="main-field" fit-view-on-init >
             <MiniMap/>
             <Controls/>
           </VueFlow>
@@ -39,31 +39,14 @@ import '@vue-flow/minimap/dist/style.css'
 import {Controls} from '@vue-flow/controls'
 import '@vue-flow/controls/dist/style.css'
 import {ref} from "vue";
+import {useMissionStore} from "stores/mission";
 
 useMeta({
   title: "Главная"
 })
 const {mainValues, secondValues, thirdValues} = storeToRefs(useWebSocketStore())
 
-const elements = ref([
-  // Nodes
-  // An input node, specified by using `type: 'input'`
-  {id: '1', type: 'input', label: 'Node 1', position: {x: 250, y: 5}},
-
-  // Default nodes, you can omit `type: 'default'`
-  {id: '2', label: 'Node 2', position: {x: 100, y: 100},},
-  {id: '3', label: 'Node 3', position: {x: 400, y: 100}},
-
-  // An output node, specified by using `type: 'output'`
-  {id: '4', type: 'output', label: 'Node 4', position: {x: 400, y: 200}},
-
-  // Edges
-  // Most basic edge, only consists of an id, source-id and target-id
-  {id: 'e1-3', source: '1', target: '3'},
-
-  // An animated edge
-  {id: 'e1-2', source: '1', target: '2', animated: true},
-])
+const { elements: missionElements } = storeToRefs(useMissionStore())
 </script>
 
 <style scoped>
