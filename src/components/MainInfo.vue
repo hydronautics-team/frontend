@@ -1,23 +1,30 @@
 <template>
   <div>
-    <q-markup-table separator="horizontal" bordered flat :class="{
-  [`bg-${color}`]: color
-}" :dark="dark">
+    <q-markup-table
+      separator="horizontal"
+      bordered
+      flat
+      :class="{
+        [`bg-${color}`]: color,
+      }"
+      :dark="dark"
+    >
       <tbody>
-      <tr v-for="(v, k) of modelValue" :key="k">
-        <td class="text-left">{{ v.name }}</td>
-        <td :class="units ? 'text-center' : 'text-right'">{{ v.value ?? "..." }}</td>
-        <td class="text-right" v-if="units">{{ v.unit }}</td>
-      </tr>
+        <tr v-for="(v, k) of modelValue" :key="k">
+          <td class="text-left">{{ v.name }}</td>
+          <td :class="units ? 'text-center' : 'text-right'">
+            {{ v.value ?? "..." }}
+          </td>
+          <td class="text-right" v-if="units">{{ v.unit }}</td>
+        </tr>
       </tbody>
     </q-markup-table>
   </div>
 </template>
 
 <script setup>
-
-import {useWebSocketStore} from "stores/websocket";
-import {storeToRefs} from "pinia";
+import { useWebSocketStore } from "stores/websocket";
+import { storeToRefs } from "pinia";
 
 defineProps({
   modelValue: {
@@ -29,12 +36,11 @@ defineProps({
   },
   units: {
     type: Boolean,
-    default: () => false
+    default: () => false,
   },
   dark: {
     type: Boolean,
-    default: () => false
-  }
-})
-
+    default: () => false,
+  },
+});
 </script>

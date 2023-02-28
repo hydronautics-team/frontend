@@ -3,25 +3,31 @@
     <div class="row full-width full-height q-gutter-sm">
       <div class="col">
         <div class="q-gutter-y-sm">
-          <main-info v-model="mainValues"/>
-          <main-info v-model="secondValues"/>
-          <main-info v-model="thirdValues" color="info"/>
+          <main-info v-model="mainValues" />
+          <main-info v-model="secondValues" />
+          <main-info v-model="thirdValues" color="info" />
+          <q-btn>Start</q-btn>
+          <q-btn>Stop</q-btn>
+          <q-btn>Reset</q-btn>
         </div>
       </div>
       <div class="col-8 col-sm-5 col-md-7 col-lg-8 col-xl-9 self-center">
-
         <q-card bordered flat>
-          <VueFlow v-model="missionElements" class="main-field" fit-view-on-init >
-            <MiniMap/>
-            <Controls/>
+          <VueFlow
+            v-model="missionElements"
+            class="main-field"
+            fit-view-on-init
+          >
+            <MiniMap />
+            <Controls />
           </VueFlow>
         </q-card>
       </div>
       <div class="col">
         <div class="q-gutter-y-sm">
-          <main-info v-model="mainValues"/>
-          <main-info v-model="secondValues"/>
-          <main-info v-model="thirdValues" color="info"/>
+          <main-info v-model="mainValues" />
+          <main-info v-model="secondValues" />
+          <main-info v-model="thirdValues" color="info" />
         </div>
       </div>
     </div>
@@ -30,28 +36,29 @@
 
 <script setup>
 import MainInfo from "components/MainInfo.vue";
-import {storeToRefs} from "pinia";
-import {useWebSocketStore} from "stores/websocket";
-import {useMeta} from "quasar";
-import {VueFlow} from '@vue-flow/core'
-import {MiniMap} from '@vue-flow/minimap'
-import '@vue-flow/minimap/dist/style.css'
-import {Controls} from '@vue-flow/controls'
-import '@vue-flow/controls/dist/style.css'
-import {ref} from "vue";
-import {useMissionStore} from "stores/mission";
+import { storeToRefs } from "pinia";
+import { useWebSocketStore } from "stores/websocket";
+import { useMeta } from "quasar";
+import { VueFlow } from "@vue-flow/core";
+import { MiniMap } from "@vue-flow/minimap";
+import "@vue-flow/minimap/dist/style.css";
+import { Controls } from "@vue-flow/controls";
+import "@vue-flow/controls/dist/style.css";
+import { ref } from "vue";
+import { useMissionStore } from "stores/mission";
 
 useMeta({
-  title: "Главная"
-})
-const {mainValues, secondValues, thirdValues} = storeToRefs(useWebSocketStore())
+  title: "Главная",
+});
+const { mainValues, secondValues, thirdValues } = storeToRefs(
+  useWebSocketStore()
+);
 
-const { elements: missionElements } = storeToRefs(useMissionStore())
+const { elements: missionElements } = storeToRefs(useMissionStore());
 </script>
 
 <style scoped>
 .main-field {
   min-height: 700px;
 }
-
 </style>
