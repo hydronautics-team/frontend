@@ -8,7 +8,8 @@ import axios from "axios";
 // "export default () => {}" function below (which runs individually
 // for each client)
 const apiAxios = axios.create({
-  baseURL: "https://jsonplaceholder.typicode.com",
+  // baseURL: "https://jsonplaceholder.typicode.com",
+  baseURL: "http://localhost:8081/",
 });
 
 export default boot(({ app }) => {

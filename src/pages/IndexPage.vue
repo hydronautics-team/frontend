@@ -6,9 +6,9 @@
           <main-info v-model="mainValues" />
           <main-info v-model="secondValues" />
           <main-info v-model="thirdValues" color="info" />
-          <q-btn>Start</q-btn>
-          <q-btn>Stop</q-btn>
-          <q-btn>Reset</q-btn>
+          <q-btn @click="sendStart()">Start</q-btn>
+          <q-btn @click="sendStop()">Stop</q-btn>
+          <q-btn @click="sendReset()">Reset</q-btn>
         </div>
       </div>
       <div class="col-8 col-sm-5 col-md-7 col-lg-8 col-xl-9 self-center">
@@ -46,6 +46,7 @@ import { Controls } from "@vue-flow/controls";
 import "@vue-flow/controls/dist/style.css";
 import { ref } from "vue";
 import { useMissionStore } from "stores/mission";
+import { sendStart } from "src/common/api/todos";
 
 useMeta({
   title: "Главная",
