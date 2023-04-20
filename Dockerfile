@@ -1,9 +1,9 @@
 # build stage
 FROM node:lts-alpine as build-stage
-WORKDIR /app
-COPY package*.json ./
+RUN apk --no-cache add git
+RUN git clone https://github.com/hydronautics-team/frontend
+WORKDIR /frontend
 RUN npm install
-COPY . .
 RUN npm run build
 # RUN apk add bash
 # CMD ["bash"]
@@ -11,5 +11,5 @@ RUN npm run build
 
 # # production stage
 FROM nginx:stable-alpine as production-stage
-COPY --from=build-stage /app/dist/spa /usr/share/nginx/html
+COPY --from=build-stage /frontend/dist/spa /usr/share/nginx/html
 CMD ["nginx", "-g", "daemon off;"]
