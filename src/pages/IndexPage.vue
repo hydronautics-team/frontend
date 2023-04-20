@@ -25,9 +25,13 @@
       </div>
       <div class="col">
         <div class="q-gutter-y-sm">
-          <main-info v-model="mainValues" />
-          <main-info v-model="secondValues" />
-          <main-info v-model="thirdValues" color="info" />
+          <!-- <main-info v-model="mainValues" />
+          <main-info v-model="secondValues" /> -->
+          <q-btn style="width: 100%">Миссия 1</q-btn>
+          <q-btn style="width: 100%">Миссия 2</q-btn>
+          <q-btn style="width: 100%">Миссия 3</q-btn>
+          <!-- <main-info v-model="thirdValues" color="info" /> -->
+          <q-btn style="width: 100%"> Параметры миссии</q-btn>
         </div>
       </div>
     </div>
@@ -47,6 +51,8 @@ import "@vue-flow/controls/dist/style.css";
 import { ref } from "vue";
 import { useMissionStore } from "stores/mission";
 import { sendStart } from "src/common/api/todos";
+import { sendStop } from "src/common/api/todos";
+import { sendReset } from "src/common/api/todos";
 
 useMeta({
   title: "Главная",

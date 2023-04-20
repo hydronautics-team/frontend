@@ -10,6 +10,7 @@ export const useMissionStore = defineStore("mission", {
       // Default nodes, you can omit `type: 'default'`
       { id: "2", label: "Node 2", position: { x: 100, y: 100 } },
       { id: "3", label: "Node 3", position: { x: 400, y: 100 } },
+      { id: "122", label: "Node 33", position: { x: 600, y: 100 } },
 
       // An output node, specified by using `type: 'output'`
       {

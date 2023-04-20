@@ -8,11 +8,13 @@ export function sendStart() {
     command: "START",
   });
 }
+
 export function sendStop() {
   return apiAxios.post("/form", {
     command: "STOP",
   });
 }
+
 export function sendReset() {
   return apiAxios.post("/form", {
     command: "RESET",
