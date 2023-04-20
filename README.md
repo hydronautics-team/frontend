@@ -38,6 +38,11 @@ npm run format
 quasar build
 ```
 
+### Docker 
+
+```docker build -t quasarfrontend1 .
+docker run --name quasarfrontend1 -d -p 80:80 quasarfrontend1:latest```
+
 ### Customize the configuration
 
 See [Configuring quasar.config.js](https://v2.quasar.dev/quasar-cli-vite/quasar-config-js).
