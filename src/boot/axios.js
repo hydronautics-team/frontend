@@ -9,7 +9,8 @@ import axios from "axios";
 // for each client)
 const apiAxios = axios.create({
   // baseURL: "https://jsonplaceholder.typicode.com",
-  baseURL: "https://webhook.site/6a12c75c-6c8a-4ffb-8ad8-33a6210d52cf",
+  // baseURL: "https://webhook.site/6a12c75c-6c8a-4ffb-8ad8-33a6210d52cf",
+  baseURL: "http://127.0.0.1:9000",
 });
 
 export default boot(({ app }) => {
